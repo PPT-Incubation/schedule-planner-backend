@@ -11,7 +11,7 @@ C://Users/<user>/.deno/bin
 ```
 3. Run the program
 ```
-deno run --allow-net --allow-read app.ts
+deno run --allow-all app.ts
 ```
 
 Mantap
