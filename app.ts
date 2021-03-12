@@ -6,6 +6,7 @@ const PORT = 3000;
 
 const schedules = db.collection ("schedules");
 
+// mongo module bug, still have to use @ts-ignore and set noCursorTimeout:false for find data
 app.get("/jadwal", async (req,res) => {
     // @ts-ignore
     const jadwal = await schedules.find({semester:6}, {noCursorTimeout:false}).toArray();

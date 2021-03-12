@@ -38,6 +38,7 @@ try {
   // @ts-ignore
   const jadwal = await schedules.findOne({ semester:6 }, { noCursorTimeout:false });
   console.log(jadwal);
+  
 } catch (e){
   console.log(e);
 }
