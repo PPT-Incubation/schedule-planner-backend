@@ -1,9 +1,21 @@
-import opine from "https://deno.land/x/opine@1.2.0/mod.ts";
-const app = opine();
+import {opine} from "https://deno.land/x/opine@1.2.0/mod.ts";
+import db from './db.ts';
 
-app.get("/", function (req,res){
+const app = opine();
+const PORT = 3000;
+
+const schedules = db.collection ("schedules");
+
+app.get("/jadwal", async (req,res) => {
+    // @ts-ignore
+    const jadwal = await schedules.find({semester:6}, {noCursorTimeout:false}).toArray();
+    console.log(jadwal);
+    res.send(jadwal);
+});
+
+app.get('/', function (req,res){
     res.send("Hello Deno");
 });
 
-app.listen(3000);
+app.listen(PORT);
 console.log("Opine started on port 3000");
