@@ -15,14 +15,12 @@ deno run --allow-all app.ts
 ```
 
 ## api endpoint TODOs
-<input type="checkbox">
-<label>`"/api/list-matkul"`</label><br>
-<input type="checkbox" checked>
-<label>`"/api/list-jadwal"`</label><br>
-<input type="checkbox" checked>
-<label>`"/api/insert-jadwal"`</label><br>
-<input type="checkbox" checked>
-<label>`"/api/edit-jadwal"`</label><br>
-<input type="checkbox">
-<label>`"/api/delete-jadwal"`</label><br>
+
+- [x] `/api/list-matkul`
+- [x] `/api/list-jadwal`
+- [x] `/api/insert-jadwal`
+- [ ] `/api/edit-jadwal`
+- [ ] `/api/delete-jadwal`
+
+
 Mantap
