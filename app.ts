@@ -21,15 +21,15 @@ app.use(json())
 app.use(urlencoded())
 
 router
-    .route("/matkul")
+    .route("api/list-matkul")
     .get(getMatkul)
     .post(addMatkul)
 
 router
-    .get("/list-jadwal", getJadwal)
-    .post("/insert-jadwal", addJadwal)
-    .put("/edit-jadwal",editJadwal)
-    .delete("/delete-jadwal",deleteJadwal)
+    .get("api/list-jadwal", getJadwal)
+    .post("api/insert-jadwal", addJadwal)
+    .put("api/edit-jadwal", editJadwal)
+    .delete("api/delete-jadwal", deleteJadwal)
 
 app.use(router)
 
