@@ -14,4 +14,13 @@ C://Users/<user>/.deno/bin
 deno run --allow-all app.ts
 ```
 
+## api endpoint TODOs
+
+- [x] `/api/list-matkul`
+- [x] `/api/list-jadwal`
+- [x] `/api/insert-jadwal`
+- [ ] `/api/edit-jadwal`
+- [ ] `/api/delete-jadwal`
+
+
 Mantap

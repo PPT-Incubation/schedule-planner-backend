@@ -1,6 +1,6 @@
-import { MongoClient } from "https://deno.land/x/mongo@v0.21.0/mod.ts";
+import { MongoClient } from "https://deno.land/x/mongo@v0.21.0/mod.ts"
 
-const client = new MongoClient();
+const client = new MongoClient()
 
 await client.connect({
     db: "schedule-planner",
@@ -18,8 +18,8 @@ await client.connect({
       db: "schedule-planner",
       mechanism: "SCRAM-SHA-1"
     }
-});
+})
 
-const db = client.database("schedule-planner");
+const db = client.database("schedule-planner")
 
-export default db;
+export default db
