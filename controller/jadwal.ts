@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from "https://deno.land/x/opine@1.2.0/mod.ts"
+import { Request, Response, NextFunction } from "https://deno.land/x/opine@1.3.2/mod.ts"
 import db from '../db.ts'
 
 const jadwal = db.collection ("schedules")

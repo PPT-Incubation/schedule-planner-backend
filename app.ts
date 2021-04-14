@@ -1,4 +1,4 @@
-import {opine, Router, json, urlencoded} from "https://deno.land/x/opine@1.2.0/mod.ts"
+import {opine, Router, json, urlencoded} from "https://deno.land/x/opine@1.3.2/mod.ts"
 import db from './db.ts'
 
 import {
@@ -21,15 +21,15 @@ app.use(json())
 app.use(urlencoded())
 
 router
-    .route("api/list-matkul")
+    .route("/api/list-matkul")
     .get(getMatkul)
     .post(addMatkul)
 
 router
-    .get("api/list-jadwal", getJadwal)
-    .post("api/insert-jadwal", addJadwal)
-    .put("api/edit-jadwal", editJadwal)
-    .delete("api/delete-jadwal", deleteJadwal)
+    .get("/api/list-jadwal", getJadwal)
+    .post("/api/insert-jadwal", addJadwal)
+    .put("/api/edit-jadwal", editJadwal)
+    .delete("/api/delete-jadwal", deleteJadwal)
 
 app.use(router)
 
