@@ -13,3 +13,6 @@ def authenticate_user(user : schemas.UserIn):
     if not security.verify_password(user.password, user_from_db.hashed_pwd):
         return None
     return user_from_db
+
+def get_all_matkuls():
+    return mongo.client.schedule_planner.matkuls.find({})

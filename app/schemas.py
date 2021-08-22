@@ -4,10 +4,11 @@ from pydantic import BaseModel
 
 class MatkulBase(BaseModel):
     nama : str
-    kelas : str
     sks : int
-    waktu : str
+    hari : str
+    jam : str
     ruang : str
+    kelas : Optional[str] = None
     dosen : Optional[str] = None
 
 class MatkulIn(MatkulBase):
