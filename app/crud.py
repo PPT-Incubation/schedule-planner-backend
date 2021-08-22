@@ -1,3 +1,4 @@
+from bson.objectid import ObjectId
 from . import mongo, schemas, security
 
 def get_user_by_username(username : str):
@@ -16,3 +17,6 @@ def authenticate_user(user : schemas.UserIn):
 
 def get_all_matkuls():
     return mongo.client.schedule_planner.matkuls.find({})
+
+def get_a_matkul(id : str):
+    return mongo.client.schedule_planner.matkuls.find_one({"_id" : ObjectId(id)})
