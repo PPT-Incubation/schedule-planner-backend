@@ -2,6 +2,24 @@ from typing import Optional
 from datetime import date
 from pydantic import BaseModel
 
+class MatkulBase(BaseModel):
+    nama : str
+    sks : int
+    hari : str
+    jam : str
+    ruang : str
+    kelas : Optional[str] = None
+    dosen : Optional[str] = None
+
+class MatkulCreate(MatkulBase):
+    pass
+
+class MatkulUpdate(MatkulBase):
+    id : str
+
+class MatkulOut(MatkulBase):
+    id : str
+
 class User(BaseModel):
     username : str
 

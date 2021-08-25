@@ -1,8 +1,8 @@
 from fastapi import FastAPI, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordRequestForm
-from starlette.middleware.cors import CORSMiddleware
 
 from . import schemas, crud, security
+from .routers import matkul
 
 description = """
 Schedule Planner API
@@ -14,7 +14,9 @@ app = FastAPI(
     description = description
 )
 
-@app.post("/login/get-token", response_model=schemas.Token, include_in_schema=True)
+app.include_router(matkul.router)
+
+@app.post("/login/get-token", response_model=schemas.Token, include_in_schema=False)
 async def login_get_token(form_data : OAuth2PasswordRequestForm = Depends()):
     user = crud.authenticate_user(schemas.UserIn(username=form_data.username, password=form_data.password))
     if not user:

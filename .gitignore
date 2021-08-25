@@ -1,0 +1,7 @@
+# pycache folders
+app/__pycache__
+app/routers/__pycache__
+app/test/__pycache__
+
+# pytest cache
+.pytest_cache
