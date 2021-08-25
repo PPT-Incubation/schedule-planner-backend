@@ -34,4 +34,14 @@ async def get_matkul(id : str):
     """
     return create_id_key(crud.get_a_matkul(id))
 
+@router.post("/matkul", status_code=status.HTTP_201_CREATED)
+async def create_matkul(matkul : schemas.MatkulIn):
+    """
+    Create new matkul
+
+    Require authentication
+    """
+    
+    # Convert ObjectId object from mongoDB as string to satisfy FastAPI return specs
+    return str(crud.create_matkul(matkul))
 

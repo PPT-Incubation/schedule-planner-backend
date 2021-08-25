@@ -1,3 +1,4 @@
+from fastapi.encoders import jsonable_encoder
 from bson.objectid import ObjectId
 from . import mongo, schemas, security
 
@@ -20,3 +21,7 @@ def get_all_matkuls():
 
 def get_a_matkul(id : str):
     return mongo.client.schedule_planner.matkuls.find_one({"_id" : ObjectId(id)})
+
+def create_matkul(matkul : schemas.MatkulIn):
+    encoded_data = jsonable_encoder(matkul)
+    return mongo.client.schedule_planner.matkuls.insert_one(encoded_data)
