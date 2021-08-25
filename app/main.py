@@ -16,7 +16,7 @@ app = FastAPI(
 
 app.include_router(matkul.router)
 
-@app.post("/login/get-token", response_model=schemas.Token, include_in_schema=True)
+@app.post("/login/get-token", response_model=schemas.Token, include_in_schema=False)
 async def login_get_token(form_data : OAuth2PasswordRequestForm = Depends()):
     user = crud.authenticate_user(schemas.UserIn(username=form_data.username, password=form_data.password))
     if not user:

@@ -1,5 +1,6 @@
 from fastapi.encoders import jsonable_encoder
 from bson.objectid import ObjectId
+from pymongo.collection import ReturnDocument
 from . import mongo, schemas, security
 
 def get_user_by_username(username : str):
@@ -22,10 +23,20 @@ def get_all_matkuls():
 def get_a_matkul(id : str):
     return mongo.client.schedule_planner.matkuls.find_one({"_id" : ObjectId(id)})
 
-def create_matkul(matkul : schemas.MatkulIn):
+def create_a_matkul(matkul : schemas.MatkulCreate):
     encoded_data = jsonable_encoder(matkul)
     return mongo.client.schedule_planner.matkuls.insert_one(encoded_data).inserted_id
 
+def update_a_matkul(matkul : schemas.MatkulUpdate):
+    encoded_data = jsonable_encoder(matkul)
+    updated_data = { k : v for k,v in encoded_data.items() if k!="id"}
 
-def delete_matkul(id : str):
+    return mongo.client.schedule_planner.matkuls.find_one_and_update(
+        {"_id" : ObjectId(encoded_data['id'])},
+        { "$set" : updated_data},
+        return_document=ReturnDocument.AFTER)['_id']
+
+
+
+def delete_a_matkul(id : str):
     return mongo.client.schedule_planner.matkuls.find_one_and_delete({"_id" : ObjectId(id)})

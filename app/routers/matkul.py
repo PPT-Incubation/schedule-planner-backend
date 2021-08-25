@@ -35,7 +35,7 @@ async def get_matkul(id : str):
     return create_id_key(crud.get_a_matkul(id))
 
 @router.post("/matkul", status_code=status.HTTP_201_CREATED)
-async def create_matkul(matkul : schemas.MatkulIn):
+async def create_matkul(matkul : schemas.MatkulCreate):
     """
     Create new matkul
 
@@ -43,7 +43,17 @@ async def create_matkul(matkul : schemas.MatkulIn):
     """
     
     # Convert ObjectId object from mongoDB as string to satisfy FastAPI return specs
-    return str(crud.create_matkul(matkul))
+    return str(crud.create_a_matkul(matkul))
+
+@router.put("/matkul")
+async def update_matkul(matkul : schemas.MatkulUpdate):
+    """
+    Update existing matkul
+
+    Require authentication
+    """
+
+    return str(crud.update_a_matkul(matkul))
 
 @router.delete("/matkul", response_model=schemas.MatkulOut)
 async def delete_matkul(id : str):
@@ -53,5 +63,5 @@ async def delete_matkul(id : str):
     Require authentication
     """
 
-    return create_id_key(crud.delete_matkul(id))
+    return create_id_key(crud.delete_a_matkul(id))
 

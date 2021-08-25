@@ -11,8 +11,11 @@ class MatkulBase(BaseModel):
     kelas : Optional[str] = None
     dosen : Optional[str] = None
 
-class MatkulIn(MatkulBase):
+class MatkulCreate(MatkulBase):
     pass
+
+class MatkulUpdate(MatkulBase):
+    id : str
 
 class MatkulOut(MatkulBase):
     id : str
