@@ -24,4 +24,8 @@ def get_a_matkul(id : str):
 
 def create_matkul(matkul : schemas.MatkulIn):
     encoded_data = jsonable_encoder(matkul)
-    return mongo.client.schedule_planner.matkuls.insert_one(encoded_data)
+    return mongo.client.schedule_planner.matkuls.insert_one(encoded_data).inserted_id
+
+
+def delete_matkul(id : str):
+    return mongo.client.schedule_planner.matkuls.find_one_and_delete({"_id" : ObjectId(id)})

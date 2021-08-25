@@ -45,3 +45,13 @@ async def create_matkul(matkul : schemas.MatkulIn):
     # Convert ObjectId object from mongoDB as string to satisfy FastAPI return specs
     return str(crud.create_matkul(matkul))
 
+@router.delete("/matkul", response_model=schemas.MatkulOut)
+async def delete_matkul(id : str):
+    """
+    Delete matkul by ID
+
+    Require authentication
+    """
+
+    return create_id_key(crud.delete_matkul(id))
+
